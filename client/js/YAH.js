@@ -2,8 +2,8 @@ angular.module('YAH', ['ngRoute'])
   .config(function($routeProvider) {
     $routeProvider
       .when('/', {
-        controller:'IntroController as intro',
-        templateUrl:'_intro.html',
+        controller:'SerialTestController as serial',
+        templateUrl:'_serial.html',
       })
       .when('/mirror', {
         controller:'MirrorTestController as mirror',

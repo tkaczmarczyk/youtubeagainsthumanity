@@ -20,7 +20,7 @@ var router = express();
 var server = http.createServer(router);
 var io = socketio.listen(server);
 
-router.use(express.static(path.resolve(__dirname, 'client')));
+router.use(express.static(path.resolve(__dirname, '')));
 var messages = [];
 var sockets = [];
 
@@ -34,6 +34,10 @@ io.on('connection', function (socket) {
     socket.on('disconnect', function () {
       sockets.splice(sockets.indexOf(socket), 1);
       updateRoster();
+    });
+
+    socket.on('triggerShot', function(){
+      console.log("Shooting");
     });
 
     socket.on('message', function (msg) {
