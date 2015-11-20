@@ -2,22 +2,72 @@
 
 <html ng-app="YAH">
 <head>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-resource.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-route.min.js"></script>
-    
-	<title>Youtube Against Humanity</title>
-  <script type="text/javascript" src="/client/js/YAH.js"></script>
-  <script type="text/javascript" src="/client/js/MirrorTestController.js"></script>
-  <script type="text/javascript" src="/client/js/IntroController.js"></script>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
 
+  <link href="/bower_components/bootstrap-material-design/dist/css/roboto.min.css" rel="stylesheet">
+  <link href="/bower_components/bootstrap-material-design/dist/css/material-fullpalette.min.css" rel="stylesheet">
+  <link href="/bower_components/bootstrap-material-design/dist/css/ripples.min.css" rel="stylesheet">
+
+
+
+	<title>Youtube Against Humanity</title>
 </head>
 
 
 
 <body>
-  <h2>Youtube against humanity, zemsta pomidora</h2>
+<div class="bs-docs-section clearfix">
+    <div class="row">
+      <div class="col-lg-12">
+
+        
+        <div class="bs-component">
+          <div class="navbar navbar-inverse">
+            <div class="container-fluid">
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse">
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="javascript:void(0)">YOUTUBE AGAINST HUMANITY</a>
+              </div>
+              <div class="navbar-collapse collapse navbar-inverse-collapse">
+                <ul class="nav navbar-nav">
+                  <li><a ng-href="#/">Intro</a></li>
+                  <li><a ng-href="#/mirror">Mirror Test</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  
   <div ng-view></div>
+  
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-resource.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-route.min.js"></script>
+    
+  <script type="text/javascript" src="/client/js/YAH.js"></script>
+  <script type="text/javascript" src="/client/js/MirrorTestController.js"></script>
+  <script type="text/javascript" src="/client/js/IntroController.js"></script>
+  
+  <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+  <script src="/bower_components/bootstrap-material-design/dist/js/ripples.min.js"></script>
+  <script src="/bower_components/bootstrap-material-design/dist/js/material.min.js"></script>
+  <script>
+    $(document).ready(function() {
+        // This command is used to initialize some elements and make them work properly
+        $.material.init();
+    });
+  </script>
+
 </body>
 
 
