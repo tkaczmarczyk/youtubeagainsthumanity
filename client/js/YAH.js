@@ -9,6 +9,10 @@ angular.module('YAH', ['ngRoute'])
         controller:'MirrorTestController as mirror',
         templateUrl:'_mirror.html',
       })
+      .when("/emo", {
+        controller:'EmotionViewController as emo',
+        templateUrl:'_emotionView.html',
+      })
       .otherwise({
         redirectTo:'/'
       });
