@@ -1,64 +1,23 @@
 <!DOCTYPE html>
 
-<html ng-app="yahApp">
+<html ng-app="YAH">
 <head>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-resource.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-route.min.js"></script>
+    
 	<title>Youtube Against Humanity</title>
+  <script type="text/javascript" src="/client/js/YAH.js"></script>
+  <script type="text/javascript" src="/client/js/MirrorTestController.js"></script>
+  <script type="text/javascript" src="/client/js/IntroController.js"></script>
 
-
-  <script type="text/javascript">
-    angular.module('yahApp', [])
-      .controller('YAHController', function() {
-        var context = this;
-        
-        context.lastSnapshotAsDataUrl = "";
-        context.cameraVideoWidth = 0;
-        context.cameraVideoHeight = 0;
-        
-        context.captureSnapshot = function() {
-          var video = document.querySelector('video');
-          var canvas = document.querySelector('canvas');
-          
-          context.cameraVideoHeight = video.offsetHeight;
-          context.cameraVideoWidth = video.offsetWidth;
-
-          canvas.height = context.cameraVideoHeight;
-          canvas.width = context.cameraVideoWidth;
-          
-          var canvasContext = canvas.getContext('2d');
-          canvasContext.drawImage(video, 0, 0);
-          
-          context.lastSnapshotAsDataUrl = canvas.toDataURL('image/jpeg');
-        };
-        
-        angular.element(document).ready(function () {
-    			var video = document.querySelector('video');
-    			navigator.getUserMedia  = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
-
-    			if (navigator.getUserMedia) {
-    			  navigator.getUserMedia({audio: false, video: true}, function(stream) {
-  			      video.src = window.URL.createObjectURL(stream);
-              context.cameraVideoHeight = video.offsetHeight;
-              context.cameraVideoWidth = video.offsetWidth;
-    			  }, function() {
-    			    console.log("Error gettingin navigator.getUserMedia")
-    			  });
-    			} else {
-    		   // fallback.
-    			}
-        });
-      });
-  </script>
 </head>
 
 
 
-<body ng-controller="YAHController as context">
-  <video autoplay id="video_preview"></video>
-  <canvas style="display:none;" ng-style="{width: context.cameraVideoWidth+'px', height: context.cameraVideoHeight+'px'}"></canvas>
-  <button ng-click="context.captureSnapshot()">Snap</button>
-
-  <img ng-src="{{context.lastSnapshotAsDataUrl}}" id="captured_frame" />
+<body>
+  <h2>Youtube against humanity, zemsta pomidora</h2>
+  <div ng-view></div>
 </body>
 
 

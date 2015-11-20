@@ -1,0 +1,5 @@
+  <video autoplay id="video_preview"></video>
+  <canvas style="display:none;"></canvas>
+  <button ng-click="mirror.captureSnapshot()">Snap</button>
+
+  <img ng-src="{{mirror.lastSnapshotAsDataUrl}}" id="captured_frame" />
