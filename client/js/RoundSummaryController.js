@@ -1,5 +1,5 @@
  angular.module('YAH')
-    .controller('RoundSummaryController', function(GlobalContext) {
+    .controller('RoundSummaryController', function(GlobalContext, ngAudio) {
     var context = this;
     context.GC = GlobalContext;
     context.forWhom = GlobalContext.getCurrentPlayer();
@@ -9,6 +9,8 @@
     context.player = GlobalContext.getCurrentPlayer();
     
     GlobalContext.getCurrentPlayer().score += GlobalContext.currentRound.score;
+    
+    var sc = GlobalContext.currentRound.score;
     
     GlobalContext.currentRound.score = 0;
     GlobalContext.currentRound.movieUrl = "";
@@ -20,9 +22,9 @@
     
     $(document).ready(function(){
 
-     for (var i = 25; i > 0; i-- ) {
+     for (var i = 2*sc; i > 0; i-- ) {
        $("#bullets_hook").append("<div class='bullet animated bounceIn'></div>");
-       $(".bullet").last().css({"left": Math.random() * 1000, "top": Math.random() * 500, "animation-delay": i*25+"ms" });
+       $(".bullet").last().css({"left": Math.random() * 1200, "top": Math.random() * 500, "animation-delay": i*45+"ms" });
      }
      
      
@@ -30,4 +32,5 @@
    
 
     context.gameOver = (GlobalContext.gameNumber >= GlobalContext.players.length * GlobalContext.roundsPerPlayer);
+
 });

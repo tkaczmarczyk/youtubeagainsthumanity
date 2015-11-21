@@ -1,5 +1,5 @@
  angular.module('YAH')
-     .controller('EnterLinkController', function(GlobalContext) {
+     .controller('EnterLinkController', function(GlobalContext, ngAudio) {
          var context = this;
          context.GC = GlobalContext;
 
@@ -8,4 +8,6 @@
          
 
          GlobalContext.currentRound.movieUrl = "";
+         
+
      });

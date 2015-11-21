@@ -1,4 +1,4 @@
-angular.module('YAH', ['ngRoute'])
+angular.module('YAH', ['ngRoute', 'ngAudio'])
   .config(function($routeProvider) {
     var socket = io.connect();
 

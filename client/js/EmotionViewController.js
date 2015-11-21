@@ -1,21 +1,40 @@
  angular.module('YAH')
-  .controller('EmotionViewController', function($scope, $location, GlobalContext) {
+  .controller('EmotionViewController', function($scope, $location, GlobalContext, ngAudio) {
+
+
    var context = this;
    var snapInterval;
    var countdownInterval;
+
+   var funnies = [];
+   funnies.push("https://www.youtube.com/watch?v=Q9zvgcOrTtw");
+   funnies.push("https://www.youtube.com/watch?v=dsHkLJ495Ro");
+   funnies.push("https://www.youtube.com/watch?v=s2g9WhgbAus");
+   funnies.push("https://www.youtube.com/watch?v=zwjY120dsvk");
+   funnies.push("https://www.youtube.com/watch?v=XrqiJBtT6gA");
+   funnies.push("https://www.youtube.com/watch?v=vwrvbjBF7YQ");
+   funnies.push("https://www.youtube.com/watch?v=1o_kH5tAggk");
+   funnies.push("https://www.youtube.com/watch?v=zBJU9ndpH1Q");
+   funnies.push("https://www.youtube.com/watch?v=6dhXrzs8pJc");
+   funnies.push("https://www.youtube.com/watch?v=lPuZ7aR_Oxw");
+   funnies.push("https://www.youtube.com/watch?v=q4UwUdCsgvk");
+   funnies.push("https://www.youtube.com/watch?v=AZ6WwVRKWV0");
+   funnies.push("https://www.youtube.com/watch?v=AWvefaN8USk");
+   funnies.push("https://www.youtube.com/watch?v=AXnrH8RqkpI");
+   funnies.push("https://www.youtube.com/watch?v=qGBrYtELsGo");
 
    context.GC = GlobalContext;
    context.emotionLevels = {};
    context.timeLeft = 20;
    context.movieUrl = "https://www.youtube.com/embed/" + youtube_parser(GlobalContext.currentRound.movieUrl) + "?rel=0&controls=0&showinfo=0&autoplay=1";
    context.forWhom = GlobalContext.getCurrentPlayer();
-   
+
    apiKeys = [];
    apiKeys.push("04ba23587af84137bc65223296969d13");
    apiKeys.push("578c181b483b44b188d9336832ca9158");
    apiKeys.push("fb2cdf80586e449c98f477ebc43ded8a");
    apiKeyIndex = 0;
-         
+
    function youtube_parser(url) {
     var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
     var match = url.match(regExp);
@@ -72,7 +91,7 @@
        xhrObj.setRequestHeader("Content-Type", "application/octet-stream");
        xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", apiKeys[apiKeyIndex % apiKeys.length]);
        apiKeyIndex++;
-       
+
       },
       type: "POST",
       // Request body
@@ -106,6 +125,8 @@
       clearInterval(context.snapInterval);
       clearInterval(countdownInterval);
       $location.path("/roundSummary");
+      ngAudio.load("/client/audio/214898__copyc4t__cartoon-throw.wav").play();
+
      }
     });
 

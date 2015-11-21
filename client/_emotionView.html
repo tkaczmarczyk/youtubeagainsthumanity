@@ -9,12 +9,10 @@
 
 <iframe width="100%" height="600" ng-src="{{emo.movieUrl}}" frameborder="0" allowfullscreen></iframe>
 
-	<input type="text" id="countdown" ng-model="emo.timeLeft" />
+	<input type="text" id="countdown" ng-model="emo.timeLeft" data-anim="tada" animate-on-change="emo.timeLeft" />
 
-	
 	<!--<button ng-click="emo.startSnapping();">Start</button>-->
 	<!--<button ng-click="emo.stopSnapping();">Stop</button>-->
-
 
 	<!--<pre style="float: right; display: none" ></pre>-->
 	<!--<div style="float: right;">-->

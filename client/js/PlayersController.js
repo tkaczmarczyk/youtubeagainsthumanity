@@ -1,5 +1,5 @@
  angular.module('YAH')
-  .controller('PlayersController', function(GlobalContext) {
+  .controller('PlayersController', function(GlobalContext, ngAudio) {
    var context = this;
    context.playersCount = GlobalContext.players.length;
    context.new_name = "";
