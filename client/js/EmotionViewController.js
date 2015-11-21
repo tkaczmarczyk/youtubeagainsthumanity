@@ -41,7 +41,7 @@
     
     
    }
-   context.movieUrl = "https://www.youtube.com/embed/" + yt_parsed + "?rel=0&controls=0&showinfo=0&autoplay=1";
+   context.movieUrl = "https://www.youtube.com/embed/" + yt_parsed + "?rel=0&controls=0&showinfo=0&autoplay=1&loop=1";
    
    context.forWhom = GlobalContext.getCurrentPlayer();
 

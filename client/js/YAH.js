@@ -56,8 +56,8 @@ angular.module('YAH', ['ngRoute', 'ngAudio'])
 
     $routeProvider
       .when('/', {
-        controller: 'IntroController as intro',
-        templateUrl: '_intro.html',
+        controller: 'PlayersController as players',
+        templateUrl: '_playersView.html',
         resolve: resolveGlobalContext
       })
       .when('/mirror', {
