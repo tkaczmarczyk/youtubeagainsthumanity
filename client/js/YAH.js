@@ -72,11 +72,16 @@ angular.module('YAH', ['ngRoute'])
         templateUrl: '_gameSummary.html',
         resolve: resolveGlobalContext
       })
+            .when("/serial", {
+              controller:'SerialTestController as serial',
+        templateUrl:'_serial.html',        resolve: resolveGlobalContext
+      })
       .otherwise({
         redirectTo: '/'
       });
       
-      
+
+
       //Keep video initialized
       //Keep video initialized
     angular.element(document).ready(function() {
