@@ -111,7 +111,7 @@
 
    }
 
-   context.snapInterval = window.setInterval(snapshot, 500);
+   context.snapInterval = window.setInterval(snapshot, GlobalContext.emotionCheckInterval);
    countdownInterval = window.setInterval(countdown, 1000);
    // context.startSnapping = function() {
    // context.snapInterval = window.setInterval(snapshot, 3000);
