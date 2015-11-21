@@ -29,17 +29,7 @@
     });
    }
 
-   // var updateBars = function(data) {
-   //  $("#anger").width(data[0]["scores"]["anger"] * 100);
-   //  $("#contempt").width(data[0]["scores"]["contempt"] * 100);
-   //  $("#disgust").width(data[0]["scores"]["disgust"] * 100);
-   //  $("#fear").width(data[0]["scores"]["fear"] * 100);
-   //  $("#happiness").width(data[0]["scores"]["happiness"] * 100);
-   //  $("#neutral").width(data[0]["scores"]["neutral"] * 100);
-   //  $("#sadness").width(data[0]["scores"]["sadness"] * 100);
-   //  $("#surprise").width(data[0]["scores"]["surprise"] * 100);
-   // }
-
+  
    function snapshot() {
     var blob;
 

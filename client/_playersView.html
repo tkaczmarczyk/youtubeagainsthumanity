@@ -1,0 +1,59 @@
+<style type="text/css">
+  #players {
+    text-align: center;
+  }
+
+  .player {
+    width: 50px;
+    height: 200px;
+    display: inline-block;
+    margin-right: 1em;
+    position: relative;
+    background: navy;
+    border: 3px solid orange;
+    top: 0;
+  }
+  
+  .player.female {
+    
+  }
+  
+  .player .name {
+    position: absolute;
+    bottom: -1em;
+    left: 0;
+    right: 0;
+    text-align: center;
+  }
+  
+  .player .player_remove {
+      zoom: 0.75;
+  } 
+  
+  #new_player_gender img {
+    cursor: pointer;
+    opacity: 0.8;
+  }
+  
+  #new_player_gender img.active {
+    opacity: 1;
+  }
+  
+  
+</style>
+
+<a ng-click="players.addPlayer()" class="btn btn-warning btn-fab btn-raised mdi-action-grade" style="right: 2em; position: absolute; top: 1em"></a>
+          
+<a ng-href="#/enter_link" class="btn btn-warning btn-fab btn-raised mdi-action-mail" style="right: 5em; position: absolute; top: 1em"></a>
+
+
+<div id="players">
+  <div class="player" ng-repeat="p in players.players"><div ng-click="players.removePlayer(p.name);" ng-class="{female: p.gender==0}" class="player_remove  btn btn-warning btn-fab btn-raised">-</div><span class="name">{{p.name}}</span></div>
+</div>
+
+<input type="text" id="new_player_name" ng-model="players.new_name" />
+
+<div id="new_player_gender">
+    <img src="girl.png" ng-class="{active: players.new_gender==0}" ng-click="players.new_gender=0" id="female" />
+    <img src="boy.png" ng-class="{active: players.new_gender==1}" ng-click="players.new_gender=1" id="male" />
+</div>
