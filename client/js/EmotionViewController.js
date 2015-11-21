@@ -1,9 +1,19 @@
  angular.module('YAH')
-  .controller('EmotionViewController', function($scope) {
+  .controller('EmotionViewController', function($scope, $location, GlobalContext) {
    var context = this;
    var snapInterval;
-   
+   var countdownInterval;
+
+   context.GC = GlobalContext;
    context.emotionLevels = {};
+   context.timeLeft = 20;
+   context.movieUrl = "https://www.youtube.com/embed/" + youtube_parser(GlobalContext.currentRound.movieUrl) + "?rel=0&controls=0&showinfo=0&autoplay=1";
+
+   function youtube_parser(url) {
+    var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
+    var match = url.match(regExp);
+    return (match && match[7].length == 11) ? match[7] : false;
+   }
 
    function dataURItoBlob(dataURI) {
     'use strict'
@@ -29,16 +39,6 @@
     });
    }
 
-   // var updateBars = function(data) {
-   //  $("#anger").width(data[0]["scores"]["anger"] * 100);
-   //  $("#contempt").width(data[0]["scores"]["contempt"] * 100);
-   //  $("#disgust").width(data[0]["scores"]["disgust"] * 100);
-   //  $("#fear").width(data[0]["scores"]["fear"] * 100);
-   //  $("#happiness").width(data[0]["scores"]["happiness"] * 100);
-   //  $("#neutral").width(data[0]["scores"]["neutral"] * 100);
-   //  $("#sadness").width(data[0]["scores"]["sadness"] * 100);
-   //  $("#surprise").width(data[0]["scores"]["surprise"] * 100);
-   // }
 
    function snapshot() {
     var blob;
@@ -72,9 +72,14 @@
      })
      .done(function(data) {
       $("pre").text(JSON.stringify(data, null, '\t'));
-      $scope.$apply(function(){
+      GlobalContext.getCurrentPlayer().emotions.push(data);
+
+      $scope.$apply(function() {
        context.emotionLevels = data;
+       GlobalContext.currentRound.mostRecentHappinessLevel = data[0].scores.happiness;
+       GlobalContext.checkThreshold();
       });
+
       console.log(data);
      })
      .fail(function() {
@@ -83,42 +88,30 @@
    }
 
 
-   context.startSnapping = function() {
-    context.snapInterval = window.setInterval(snapshot, 3000);
-    snapshot();
-   }
 
-   context.stopSnapping = function() {
-    clearInterval(context.snapInterval);
-   }
+   function countdown() {
 
-   angular.element(document).ready(function() {
-
-    navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
-
-    var video = document.querySelector('video');
-
-
-    var vgaConstraints = {
-     video: {
-      mandatory: {
-       maxWidth: 640,
-       maxHeight: 360
-      }
+    $scope.$apply(function() {
+     context.timeLeft--;
+     if (context.timeLeft <= 0) {
+      clearInterval(context.snapInterval);
+      clearInterval(countdownInterval);
+      $location.path("/roundSummary");
      }
-    };
+    });
 
-    if (navigator.getUserMedia) {
-     navigator.getUserMedia(vgaConstraints, function(stream) {
-      video.src = window.URL.createObjectURL(stream);
-     }, function() {
-      console.log("ERRORERROR");
-     });
-    }
-    else {
-     // video.src = 'somevideo.webm'; // fallback.
-    }
+   }
 
-   });
+   context.snapInterval = window.setInterval(snapshot, 3000);
+   countdownInterval = window.setInterval(countdown, 1000);
+   // context.startSnapping = function() {
+   // context.snapInterval = window.setInterval(snapshot, 3000);
+   // snapshot();
+   // }
+
+   // context.stopSnapping = function() {
+   // clearInterval(context.snapInterval);
+   // }
+
 
   });
