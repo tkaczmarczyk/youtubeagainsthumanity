@@ -24,6 +24,19 @@ router.use(express.static(path.resolve(__dirname, '')));
 var messages = [];
 var sockets = [];
 
+var SerialPort = require("serialport").SerialPort
+var serialPort = new SerialPort("COM28", {
+  baudrate: 9600
+}, false); // this is the openImmediately flag [default is true]
+
+serialPort.open(function (error) {
+  if ( error ) {
+    console.log('failed to open: '+error);
+  } else {
+    console.log('open');
+  }
+});
+
 io.on('connection', function (socket) {
     messages.forEach(function (data) {
       socket.emit('message', data);
@@ -37,6 +50,7 @@ io.on('connection', function (socket) {
     });
 
     socket.on('triggerShot', function(){
+      serialPort.write("LET\n");
       console.log("Shooting");
     });
 
