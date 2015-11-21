@@ -141,10 +141,17 @@ angular.module('YAH').directive('animateOnChange', function($timeout) {
   return function(scope, element, attr) {
     scope.$watch(attr.animateOnChange, function(nv,ov) {
       if (nv!=ov) {
-        element.addClass('changed');
-        $timeout(function() {
-          element.removeClass('changed');
-        }, 200); // Could be enhanced to take duration as a parameter
+        if(element.hasClass("animated")) return;
+        
+        element.addClass(element.attr('data-anim'));
+        element.addClass('animated');
+        
+        var removeAnimatedClass = function(){
+          element.removeClass("animated");
+          element.removeClass(element.attr('data-anim'));
+          // element[0].removeEventListener('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', removeAnimatedClass);
+        };
+        element.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', removeAnimatedClass);
       }
     });
   };

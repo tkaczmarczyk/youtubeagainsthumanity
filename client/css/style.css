@@ -203,13 +203,40 @@ input[type=text] {
     color: #fff;
 }
 
-.current_player_score[animate-on-change] {
-    transition: all 0.2s;
-    -webkit-transition: all 0.2s;
+/*.current_player_score[animate-on-change] {*/
+/*    transition: all 0.2s;*/
+/*    -webkit-transition: all 0.2s;*/
+/*}*/
+
+/*.current_player_score[animate-on-change].changed {*/
+/*    background-color: red;*/
+/*    transition: none;*/
+/*    -webkit-transition: none;*/
+/*}*/
+
+
+#after_round_splash {
+    position: relative;
+    top: -2em;
+    z-index: 0;
+    padding: 3em;
+    top: 0;
+    height: 500px;
+    left: 0;
+    right: 0;
+    background: white url('../img/sii_elementy_ranny_on.png') center center no-repeat;
+    background-size: 15%;
 }
 
-.current_player_score[animate-on-change].changed {
-    background-color: red;
-    transition: none;
-    -webkit-transition: none;
+#after_round_splash.female {
+    background-image: url('../img/sii_elementy_ranna_ona.png');
+}
+
+.bullet {
+    position: absolute;
+    border-radius: 100%;
+    background: orange;
+    width: 1em;
+    height: 1em;
+    z-index: 10;
 }

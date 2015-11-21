@@ -17,5 +17,17 @@
     //Increase game number for the next link
     GlobalContext.gameNumber ++;
     
+    
+    $(document).ready(function(){
+
+     for (var i = 25; i > 0; i-- ) {
+       $("#bullets_hook").append("<div class='bullet animated bounceIn'></div>");
+       $(".bullet").last().css({"left": Math.random() * 1000, "top": Math.random() * 500, "animation-delay": i*25+"ms" });
+     }
+     
+     
+   });
+   
+
     context.gameOver = (GlobalContext.gameNumber >= GlobalContext.players.length * GlobalContext.roundsPerPlayer);
 });

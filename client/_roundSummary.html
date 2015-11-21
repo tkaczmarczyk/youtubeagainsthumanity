@@ -1,14 +1,18 @@
 <div class="row">
-    <div class="col-lg-12 teal-bg shadow" id="teal_bar">
-        <div id="player_icon" ng-class="{female: round.forWhom.gender==0}"></div> {{round.forWhom.name}}
-    </div>
+  <div class="col-lg-12 teal-bg shadow" id="teal_bar">
+    <div id="player_icon" ng-class="{female: round.forWhom.gender==0}"></div> {{round.forWhom.name}}
+  </div>
 </div>
 
-<h1>{{round.scoreThisRound | number : 0}}</h1>
+<div id="after_round_splash"   class="animated fadeIn" ng-class="{female: round.forWhom.gender==0}" >
+  <div id="bullets_hook"></div>
+  <h1>{{round.scoreThisRound | number : 0}}</h1>
 
-<h1>{{round.player.score | number : 0}} so far</h1>
+  <h1>{{round.player.score | number : 0}} so far</h1>
 
-<h1>{{round.player.name}}</h1>
+  <h1>{{round.player.name}}</h1>
+</div>
+
 
 <a ng-if="!round.gameOver" ng-href="#/enter_link">Next round</a>
 

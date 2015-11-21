@@ -7,7 +7,7 @@
     </div>
 </div>
 
-<iframe width="100%" height="100%" ng-src="{{emo.movieUrl}}" frameborder="0" allowfullscreen></iframe>
+<iframe width="100%" height="600" ng-src="{{emo.movieUrl}}" frameborder="0" allowfullscreen></iframe>
 
 	<input type="text" id="countdown" ng-model="emo.timeLeft" />
 
@@ -32,6 +32,6 @@
 	
 	<div id="below_happiness_bar" class="shadow">
 		<img src="./img/sad_icon.png" style="float: left;" />
-		<span class="current_player_score" animate-on-change="emo.GC.currentRound.score">{{emo.GC.currentRound.score | number:0}}</span>
+		<span class="current_player_score" data-anim="tada" animate-on-change="emo.GC.currentRound.score">{{emo.GC.currentRound.score | number:0}}</span>
 		<img src="./img/happy_icon.png" style="float: right;" />
 	</div>

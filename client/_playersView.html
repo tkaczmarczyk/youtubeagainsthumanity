@@ -13,7 +13,7 @@
 
 
 <div id="players">
-  <div class="player" ng-repeat="p in players.players" ng-class="{female: p.gender==0}"><div ng-click="players.removePlayer(p.name);"  class="player_remove  btn btn-warning btn-fab btn-raised mdi-navigation-cancel"></div><span class="name">{{p.name}}</span></div>
+  <div class="player animated bounceIn" ng-repeat="p in players.players" ng-class="{female: p.gender==0}"><div ng-click="players.removePlayer(p.name);"  class="player_remove  btn btn-warning btn-fab btn-raised mdi-navigation-cancel"></div><span class="name">{{p.name}}</span></div>
 </div>
 
 
