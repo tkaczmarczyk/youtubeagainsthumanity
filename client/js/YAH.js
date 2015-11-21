@@ -12,7 +12,8 @@ angular.module('YAH', ['ngRoute'])
       gameNumber: 0,
       players: [],
       roundsPerPlayer: 1,
-      threshold: 0.3
+      threshold: 0.3,
+      emotionCheckInterval: 500
     };
     GlobalContext.getCurrentPlayer = function() {
       return GlobalContext.players[GlobalContext.gameNumber % GlobalContext.players.length];
@@ -22,8 +23,8 @@ angular.module('YAH', ['ngRoute'])
         //Start shooting
         //3 seconds interval
         var t = (GlobalContext.currentRound.mostRecentHappinessLevel-GlobalContext.threshold)/(1-GlobalContext.threshold);
-        var bulletIntervalForMin = 3500;
-        var bulletIntervalForMax = 1000;
+        var bulletIntervalForMin = 1000;
+        var bulletIntervalForMax = 400;
         var bulletInterval = bulletIntervalForMin + t * (bulletIntervalForMax - bulletIntervalForMin);
         
      		socket.emit('triggerShot');
@@ -34,7 +35,7 @@ angular.module('YAH', ['ngRoute'])
         
         setTimeout(function(){
           clearInterval(triggerTimer);
-        }, 3000);
+        }, GlobalContext.emotionCheckInterval);
 
         //Add points
         GlobalContext.currentRound.score += GlobalContext.currentRound.mostRecentHappinessLevel * 5;
