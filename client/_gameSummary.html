@@ -1,8 +1,8 @@
 <div style="width: 500px; height: 500px; position: relative; left: 50px; margin: 0 auto; font-weight: 700; font-size: 18px" class="ng-scope">
     <img src="./img/sii_elementy_podium.png" class="animated bounceInDown" style="width: 400px; position: absolute; bottom: 0; left: 0px;">
     <img ng-src="./img/{{game.playersSorted[1].gender?'female':'male'}}.png" class="animated fadeIn" style="animation-delay: 600ms; position: absolute; bottom: 120px; left: 10px;">
-    <img src="./img/female.png" class="animated fadeIn" style="animation-delay: 300ms; position: absolute; bottom: 80px; left: 280px;">
-    <img src="./img/female.png" class="animated fadeIn" style="animation-delay: 900ms; position: absolute; bottom: 223px; left: 165px;">
+    <img ng-src="./img/{{game.playersSorted[1].gender?'female':'male'}}.png" class="animated fadeIn" style="animation-delay: 300ms; position: absolute; bottom: 80px; left: 280px;">
+    <img ng-src="./img/{{game.playersSorted[1].gender?'female':'male'}}.png" class="animated fadeIn" style="animation-delay: 900ms; position: absolute; bottom: 223px; left: 165px;">
 
     <span class="animated fadeIn" style="animation-delay: 1300ms; position: absolute; bottom: 80px; left: 10px; width: 126px;">{{game.playersSorted[1].score | number : 0}}</span>
     <span ng-if="game.playersSorted.length>2" class="animated fadeIn" style="animation-delay: 1000ms; position: absolute; bottom: 40px; left: 280px; width: 126px;">{{game.playersSorted[2].score | number : 0}}</span>

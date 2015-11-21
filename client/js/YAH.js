@@ -11,7 +11,7 @@ angular.module('YAH', ['ngRoute', 'ngAudio'])
       },
       gameNumber: 0,
       players: [],
-      roundsPerPlayer: 1,
+      roundsPerPlayer: 3,
       threshold: 0.4,
       emotionCheckInterval: 500
     };

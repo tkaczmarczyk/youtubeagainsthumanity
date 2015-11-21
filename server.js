@@ -50,7 +50,7 @@ io.on('connection', function (socket) {
     });
 
     socket.on('triggerShot', function(){
-      if(serialPort.isOpen()) serialPort.write("LET\n");
+      serialPort.write("LET\n");
       console.log("Shooting");
     });
 

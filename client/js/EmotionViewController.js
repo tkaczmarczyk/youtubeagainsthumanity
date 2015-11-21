@@ -7,26 +7,42 @@
    var countdownInterval;
 
    var funnies = [];
-   funnies.push("https://www.youtube.com/watch?v=Q9zvgcOrTtw");
-   funnies.push("https://www.youtube.com/watch?v=dsHkLJ495Ro");
-   funnies.push("https://www.youtube.com/watch?v=s2g9WhgbAus");
-   funnies.push("https://www.youtube.com/watch?v=zwjY120dsvk");
-   funnies.push("https://www.youtube.com/watch?v=XrqiJBtT6gA");
-   funnies.push("https://www.youtube.com/watch?v=vwrvbjBF7YQ");
-   funnies.push("https://www.youtube.com/watch?v=1o_kH5tAggk");
-   funnies.push("https://www.youtube.com/watch?v=zBJU9ndpH1Q");
-   funnies.push("https://www.youtube.com/watch?v=6dhXrzs8pJc");
-   funnies.push("https://www.youtube.com/watch?v=lPuZ7aR_Oxw");
-   funnies.push("https://www.youtube.com/watch?v=q4UwUdCsgvk");
-   funnies.push("https://www.youtube.com/watch?v=AZ6WwVRKWV0");
-   funnies.push("https://www.youtube.com/watch?v=AWvefaN8USk");
-   funnies.push("https://www.youtube.com/watch?v=AXnrH8RqkpI");
-   funnies.push("https://www.youtube.com/watch?v=qGBrYtELsGo");
+   funnies.push("Q9zvgcOrTtw");
+   funnies.push("dsHkLJ495Ro");
+   funnies.push("s2g9WhgbAus");
+   funnies.push("zwjY120dsvk");
+   funnies.push("XrqiJBtT6gA");
+   funnies.push("vwrvbjBF7YQ");
+   funnies.push("1o_kH5tAggk");
+   funnies.push("zBJU9ndpH1Q");
+   funnies.push("6dhXrzs8pJc");
+   funnies.push("lPuZ7aR_Oxw");
+   funnies.push("q4UwUdCsgvk");
+   funnies.push("AZ6WwVRKWV0");
+   funnies.push("AWvefaN8USk");
+   funnies.push("AXnrH8RqkpI");
+   funnies.push("qGBrYtELsGo");
+   funnies.push("zALBUynV-o4");
+   funnies.push("R4lCq2nhh0g");
+   funnies.push("atOFHAawIAA");
+   funnies.push("98oWsJqXZsY");
+   funnies.push("vVKRUrIWfEI");
+   funnies.push("YOyLY0gMc6Q");
 
    context.GC = GlobalContext;
    context.emotionLevels = {};
    context.timeLeft = 20;
-   context.movieUrl = "https://www.youtube.com/embed/" + youtube_parser(GlobalContext.currentRound.movieUrl) + "?rel=0&controls=0&showinfo=0&autoplay=1";
+   var yt_parsed = youtube_parser(GlobalContext.currentRound.movieUrl);
+   if(yt_parsed == false){
+     yt_parsed = funnies[Math.floor(Math.random() * funnies.length)];
+    //nie ma filma
+    console.log(funnies);
+    console.log(yt_parsed);
+    
+    
+   }
+   context.movieUrl = "https://www.youtube.com/embed/" + yt_parsed + "?rel=0&controls=0&showinfo=0&autoplay=1";
+   
    context.forWhom = GlobalContext.getCurrentPlayer();
 
    apiKeys = [];
