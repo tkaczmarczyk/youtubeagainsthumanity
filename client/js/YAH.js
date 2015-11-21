@@ -12,7 +12,7 @@ angular.module('YAH', ['ngRoute'])
       gameNumber: 0,
       players: [],
       roundsPerPlayer: 1,
-      threshold: 0.3
+      threshold: 0.4
     };
     GlobalContext.getCurrentPlayer = function() {
       return GlobalContext.players[GlobalContext.gameNumber % GlobalContext.players.length];

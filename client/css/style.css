@@ -9,6 +9,11 @@ body {
     text-transform: lowercase;
 }
 
+
+.navbar-inverse.navbar {
+    background: rgb(38, 36, 93);
+}
+
 .shadow {
     box-shadow: 0 0 5px rgba(0, 0, 0, 1);
 }
@@ -213,6 +218,11 @@ input[type=text] {
 /*    transition: none;*/
 /*    -webkit-transition: none;*/
 /*}*/
+
+#footer h1 {
+    text-align: center;
+    color: rgb(253, 173, 85);
+}
 
 
 #after_round_splash {

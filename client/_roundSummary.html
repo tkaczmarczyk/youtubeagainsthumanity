@@ -6,20 +6,18 @@
 
 <div id="after_round_splash"   class="animated fadeIn" ng-class="{female: round.forWhom.gender==0}" >
   <div id="bullets_hook"></div>
-  <h1>{{round.scoreThisRound | number : 0}}</h1>
-
-  <h1>{{round.player.score | number : 0}} so far</h1>
-
-  <h1>{{round.player.name}}</h1>
+  
 </div>
 
 
-<a ng-if="!round.gameOver" ng-href="#/enter_link">Next round</a>
-
-<a ng-if="round.gameOver" ng-href="#/gameSummary">Game over</a>
 
 <div class="row shadow">
-  <div class="col-md-12" id="footer">
-    Powered by: Tududu Tududu
+  <div class="col-md-12" id="footer" style="text-align: center">
+    <h1>{{round.scoreThisRound | number : 0}}   {{round.player.score | number : 0}} so far</h1>
+    <br />
+        
+    <a ng-if="!round.gameOver" ng-href="#/enter_link">Next round</a>
+    
+    <a ng-if="round.gameOver" ng-href="#/gameSummary">Game over</a>
   </div>
 </div>
