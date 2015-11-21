@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
 <html ng-app="YAH">
+
 <head>
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
 
@@ -8,21 +9,21 @@
   <link href="/bower_components/bootstrap-material-design/dist/css/material-fullpalette.min.css" rel="stylesheet">
   <link href="/bower_components/bootstrap-material-design/dist/css/ripples.min.css" rel="stylesheet">
 
+  <link href="./css/style.css" rel="stylesheet" />
 
-
-	<title>Youtube Against Humanity</title>
+  <title>Youtube Against Humanity</title>
 </head>
 
 
 
 <body>
-<div class="bs-docs-section clearfix">
+  <div class="bs-docs-section clearfix">
     <div class="row">
       <div class="col-lg-12">
 
-        
+
         <div class="bs-component">
-          <div class="navbar navbar-inverse">
+          <div class="navbar navbar-inverse shadow">
             <div class="container-fluid">
               <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse">
@@ -39,33 +40,45 @@
                   <li><a ng-href="#/emo">EmotionsView</a></li>
                   <li><a ng-href="#/players">Players</a></li>
                   <li><a ng-href="#/enter_link">Enter Link</a></li>
+                  <li><a ng-href="#/roundSummary">Round Summary</a></li>
+                  <li><a ng-href="#/gameSummary">Game Summary</a></li>
+
                 </ul>
-              
-                
+
+
               </div>
             </div>
-            
-            
+
+
           </div>
         </div>
 
       </div>
     </div>
   </div>
-  
+
   <div ng-view></div>
-  
-  
+  <video autoplay id="video_preview" style="zoom: 0.3; display:none;"></video>
+
+
+  <div class="row">
+    <div class="col-md-12" id="footer">
+      Powered by: Tududu Tududu
+    </div>
+  </div>
+
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-resource.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-route.min.js"></script>
-    
+
   <script type="text/javascript" src="/client/js/YAH.js"></script>
   <script type="text/javascript" src="/client/js/MirrorTestController.js"></script>
   <script type="text/javascript" src="/client/js/IntroController.js"></script>
   <script type="text/javascript" src="/client/js/EmotionViewController.js"></script>
   <script type="text/javascript" src="/client/js/PlayersController.js"></script>
   <script type="text/javascript" src="/client/js/EnterLinkController.js"></script>
+  <script type="text/javascript" src="/client/js/RoundSummaryController.js"></script>
+  <script type="text/javascript" src="/client/js/GameSummaryController.js"></script>
 
   <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
@@ -73,8 +86,8 @@
   <script src="/bower_components/bootstrap-material-design/dist/js/material.min.js"></script>
   <script>
     $(document).ready(function() {
-        // This command is used to initialize some elements and make them work properly
-        $.material.init();
+      // This command is used to initialize some elements and make them work properly
+      $.material.init();
     });
   </script>
 

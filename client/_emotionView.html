@@ -18,25 +18,49 @@
 		top: 0.5em;
 		right: 0;
 	}
+	
+	#video_preview {
+		position: absolute;
+		bottom: 1em;
+		right: 1em;
+	}
+	
+	#happiness_bar {
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		background: red;
+		height: 2em;
+		/*width: 30%;*/
+		border-radius: 0 3px 3px 0;
+	}
+	
+	#countdown {
+		font-size: 48px;
+	}
 	</style>
+<iframe width="560" height="315" ng-src="{{emo.movieUrl}}" frameborder="0" allowfullscreen></iframe>
 
-	<video autoplay id="video_preview" style="zoom: 0.3"></video>
+	<input type="text" id="countdown" ng-model="emo.timeLeft" />
+
 	<canvas style="display:none;" id="temp_canvas" width="640" height="360"></canvas>
 
-	<button ng-click="emo.startSnapping();">Start</button>
-	<button ng-click="emo.stopSnapping();">Stop</button>
+	<!--<button ng-click="emo.startSnapping();">Start</button>-->
+	<!--<button ng-click="emo.stopSnapping();">Stop</button>-->
 
 	<div style="clear: both;"></div>
 
-	<pre style="float: right; display: none" ></pre>
-	<div style="float: right;">
-		<div class="progressbar" ng-style="{width: emo.emotionLevels[0].scores.anger*100+'%'}" id="anger"><span>Anger</span></div>
-		<div class="progressbar"  ng-style="{width: emo.emotionLevels[0].scores.contempt*100+'%'}" id="contempt"><span>Contempt</span></div>
-		<div class="progressbar"  ng-style="{width: emo.emotionLevels[0].scores.disgust*100+'%'}" id="disgust"><span>Disgust</span></div>
-		<div class="progressbar"  ng-style="{width: emo.emotionLevels[0].scores.fear*100+'%'}" id="fear"><span>Fear</span></div>
-		<div class="progressbar"  ng-style="{width: emo.emotionLevels[0].scores.happiness*100+'%'}" id="happiness"><span>Happiness</span></div>
-		<div class="progressbar"  ng-style="{width: emo.emotionLevels[0].scores.neutral*100+'%'}" id="neutral"><span>Neutral</span></div>
-		<div class="progressbar"  ng-style="{width: emo.emotionLevels[0].scores.sadness*100+'%'}" id="sadness"><span>Sadness</span></div>
-		<div class="progressbar"  ng-style="{width: emo.emotionLevels[0].scores.surprise*100+'%'}" id="surprise"><span>Surprise</span></div>
-	</div>
-	<img src="" id="captured_frame" style="float: left" />
+	<!--<pre style="float: right; display: none" ></pre>-->
+	<!--<div style="float: right;">-->
+	<!--	<div class="progressbar" ng-style="{width: emo.emotionLevels[0].scores.anger*100+'%'}" id="anger"><span>Anger</span></div>-->
+	<!--	<div class="progressbar"  ng-style="{width: emo.emotionLevels[0].scores.contempt*100+'%'}" id="contempt"><span>Contempt</span></div>-->
+	<!--	<div class="progressbar"  ng-style="{width: emo.emotionLevels[0].scores.disgust*100+'%'}" id="disgust"><span>Disgust</span></div>-->
+	<!--	<div class="progressbar"  ng-style="{width: emo.emotionLevels[0].scores.fear*100+'%'}" id="fear"><span>Fear</span></div>-->
+	<!--	<div class="progressbar"  ng-style="{width: emo.emotionLevels[0].scores.happiness*100+'%'}" id="happiness"><span>Happiness</span></div>-->
+	<!--	<div class="progressbar"  ng-style="{width: emo.emotionLevels[0].scores.neutral*100+'%'}" id="neutral"><span>Neutral</span></div>-->
+	<!--	<div class="progressbar"  ng-style="{width: emo.emotionLevels[0].scores.sadness*100+'%'}" id="sadness"><span>Sadness</span></div>-->
+	<!--	<div class="progressbar"  ng-style="{width: emo.emotionLevels[0].scores.surprise*100+'%'}" id="surprise"><span>Surprise</span></div>-->
+	<!--</div>-->
+	
+	<div id="happiness_bar" ng-style="{width: emo.emotionLevels[0].scores.happiness*100+'%'}"></div>
+	<img src="" id="captured_frame" style="float: left; display: none" />

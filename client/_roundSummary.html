@@ -1,0 +1,10 @@
+
+<h1>{{round.scoreThisRound}}</h1>
+
+<h1>{{round.player.score}} so far</h1>
+
+<h1>{{round.player.name}}</h1>
+
+<a ng-if="!round.gameOver" ng-href="#/enter_link">Next round</a>
+
+<a ng-if="round.gameOver" ng-href="#/gameSummary">Game over</a>
