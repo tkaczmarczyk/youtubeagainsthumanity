@@ -23,6 +23,7 @@ var io = socketio.listen(server);
 router.use(express.static(path.resolve(__dirname, '')));
 var messages = [];
 var sockets = [];
+var pendingSocket = null;
 
 var SerialPort = require("serialport").SerialPort;
 var serialPort = new SerialPort("COM28", {
@@ -38,15 +39,66 @@ serialPort.open(function (error) {
 });
 
 io.on('connection', function (socket) {
-    messages.forEach(function (data) {
-      socket.emit('message', data);
-    });
+    // messages.forEach(function (data) {
+    //   socket.emit('message', data);
+    // });
+    var registerNewClient = function(newSocket) {
+      if(!pendingSocket) pendingSocket = newSocket;
+      else {
+        pendingSocket.pair = newSocket;
+        newSocket.pair = pendingSocket;
+        pendingSocket = null;
 
-    sockets.push(socket);
+        newSocket.emit('pairIdentified', newSocket.pair.player);
+        newSocket.pair.emit('pairIdentified', newSocket.player);        
+      }
+    }
+    
+    // var findPairedSocket = function(socket) {
+    //   var i = 0;
+    //   for(i = 0; i<socketPairs.length; i++) {
+    //     if(socketPairs[i].length>=1 && socketPairs[i][0] == socket) break;
+    //     if(socketPairs[i].length>=2 && socketPairs[i][1] == socket) break;
+    //   }
+      
+    //   if(i<socketPairs.length) {
+    //     if(socketPairs[i].length < 2) return null;
+    //     if(socketPairs[i][0] == socket) return socketPairs[i][1];
+    //     if(socketPairs[i][1] == socket) return socketPairs[i][0];
+    //   }
+    // }
+    
+    socket.player = {name: 'Almost there...', gender: 0};
+    registerNewClient(socket);
 
+    // var currentSocketPair = socketPairs[socketPairs.length-1];
+    
     socket.on('disconnect', function () {
-      sockets.splice(sockets.indexOf(socket), 1);
-      updateRoster();
+      //Find socket pair it belonged to
+      console.log("Socket disconnect");
+      if(pendingSocket == socket) pendingSocket = null;
+      if(socket.pair) {
+        socket.pair.emit("pairDisconnected");
+        socket.pair.pair = null;
+        socket.pair = null;
+      }
+      // var pairedSocket = findPairedSocket(socket);
+      // if(pairedSocket) {
+      //   pairedSocket.emit("pairDisconnected");
+      // }
+      
+      // var i = 0;
+      // for(i = 0; i<socketPairs.length; i++) {
+      //   if(socketPairs[i].length>=1 && socketPairs[i][0] == socket) break;
+      //   if(socketPairs[i].length>=2 && socketPairs[i][1] == socket) break;
+      // }
+      
+      // if(i<socketPairs.length) {
+      //   socketPairs.splice(i, 1);
+      // }
+      
+      // var currentSocketPair = socketPairs[socketPairs.length-1];
+      // registerNewClient(currentSocketPair, socket);
     });
 
     socket.on('triggerShot', function(){
@@ -71,10 +123,25 @@ io.on('connection', function (socket) {
       });
     });
 
-    socket.on('identify', function (name) {
-      socket.set('name', String(name || 'Anonymous'), function (err) {
-        updateRoster();
-      });
+    socket.on('identify', function (name, gender) {
+      socket.player = {
+        name: name,
+        gender: gender
+      };
+      
+      console.log("New identify : " + name);
+      if(socket.pair) {
+        socket.emit('pairIdentified', socket.pair.player);
+        socket.pair.emit('pairIdentified', socket.player);
+      }
+    });
+    
+    socket.on('selectMovie', function(url) {
+      socket.pair.emit("movieSelected", url);
+    });
+    
+    socket.on('registerScore', function(score) {
+      socket.pair.emit("scoreRegistered", score);
     });
   });
 

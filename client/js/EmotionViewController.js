@@ -26,8 +26,8 @@
    context.GC = GlobalContext;
    context.emotionLevels = {};
    context.timeLeft = 20;
-   context.movieUrl = "https://www.youtube.com/embed/" + youtube_parser(GlobalContext.currentRound.movieUrl) + "?rel=0&controls=0&showinfo=0&autoplay=1";
-   context.forWhom = GlobalContext.getCurrentPlayer();
+   context.movieUrl = "";
+   context.forWhom = GlobalContext.players[1];
 
    apiKeys = [];
    apiKeys.push("04ba23587af84137bc65223296969d13");
@@ -132,8 +132,15 @@
 
    }
 
-   context.snapInterval = window.setInterval(snapshot, GlobalContext.emotionCheckInterval);
-   countdownInterval = window.setInterval(countdown, 1000);
+   var waitingForReadyTimer = window.setInterval(function() {
+    if(context.GC.movieOutReady && context.GC.movieInReady) {
+     context.movieUrl = "https://www.youtube.com/embed/" + youtube_parser(GlobalContext.currentRound.movieUrl) + "?rel=0&controls=0&showinfo=0&autoplay=1";
+     context.snapInterval = window.setInterval(snapshot, GlobalContext.emotionCheckInterval);
+     countdownInterval = window.setInterval(countdown, 1000);
+     window.clearInterval(waitingForReadyTimer);
+    }
+   }, 500);
+
    // context.startSnapping = function() {
    // context.snapInterval = window.setInterval(snapshot, 3000);
    // snapshot();

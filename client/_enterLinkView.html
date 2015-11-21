@@ -6,12 +6,12 @@
 
 <div style="margin: 2em">
     <img src="./img/sii_elementy_laptop.png" style="height: 80px" /><br />
-    <input type="text" ng-model="enter_link.GC.currentRound.movieUrl" id="link_input" placeholder="Movie link" />
+    <input type="text" ng-model="enter_link.GC.outgoingMovie" id="link_input" placeholder="Movie link" />
 </div>
 
 <div class="row">
     <div class="col-lg-12 teal-bg shadow">
-        <a ng-href="#/emo" ng-audio="/client/audio/214898__copyc4t__cartoon-throw.wav"><img src="./img/sii_elementy_play.png" style="height: 200px; margin: 2em" class="animated bounceIn"></a>
+        <a ng-href="#/emo" ng-click="enter_link.GC.selectMovie(enter_link.GC.outgoingMovie)" ng-audio="/client/audio/214898__copyc4t__cartoon-throw.wav"><img src="./img/sii_elementy_play.png" style="height: 200px; margin: 2em" class="animated bounceIn"></a>
     </div>
 </div>
 

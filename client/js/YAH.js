@@ -10,11 +10,24 @@ angular.module('YAH', ['ngRoute', 'ngAudio'])
         mostRecentHappinessLevel: 0
       },
       gameNumber: 0,
-      players: [],
+      players: [{
+        name: "Me",
+        gender: 0
+      }, {
+        name: "Waiting...",
+        gender: 0
+      }],
+      pairConnected: false,
+      movieOutReady: false,
+      movieInReady: false,
+      outgoingMovie: "",
       roundsPerPlayer: 1,
       threshold: 0.4,
-      emotionCheckInterval: 500
+      emotionCheckInterval: 500,
+      locationProvider: null, //filled in a controller. Hack
+      scopeProvider: null //filled in a controller. Hack
     };
+
     GlobalContext.getCurrentPlayer = function() {
       return GlobalContext.players[GlobalContext.gameNumber % GlobalContext.players.length];
     };
@@ -22,18 +35,18 @@ angular.module('YAH', ['ngRoute', 'ngAudio'])
       if (GlobalContext.currentRound.mostRecentHappinessLevel > GlobalContext.threshold) {
         //Start shooting
         //3 seconds interval
-        var t = (GlobalContext.currentRound.mostRecentHappinessLevel-GlobalContext.threshold)/(1-GlobalContext.threshold);
+        var t = (GlobalContext.currentRound.mostRecentHappinessLevel - GlobalContext.threshold) / (1 - GlobalContext.threshold);
         var bulletIntervalForMin = 1000;
         var bulletIntervalForMax = 500;
         var bulletInterval = bulletIntervalForMin + t * (bulletIntervalForMax - bulletIntervalForMin);
-        
-     		socket.emit('triggerShot');
-        var triggerTimer = setInterval(function(){
+
+        socket.emit('triggerShot');
+        var triggerTimer = setInterval(function() {
           console.log("Shoot");
-       		socket.emit('triggerShot');
+          socket.emit('triggerShot');
         }, bulletInterval);
-        
-        setTimeout(function(){
+
+        setTimeout(function() {
           clearInterval(triggerTimer);
         }, GlobalContext.emotionCheckInterval);
 
@@ -48,18 +61,56 @@ angular.module('YAH', ['ngRoute', 'ngAudio'])
       }
     };
 
+    GlobalContext.sendIdentify = function() {
+      socket.emit('identify', GlobalContext.players[0].name, GlobalContext.players[0].gender);
+    };
+
+    GlobalContext.selectMovie = function(url) {
+      GlobalContext.movieOutReady = true;
+      socket.emit('selectMovie', url);
+    };
+
+    GlobalContext.registerScore = function(score) {
+      GlobalContext.outMovieReady = false;
+      socket.emit('registerScore', score);
+    };
+
     var resolveGlobalContext = {
       GlobalContext: function() {
         return GlobalContext;
       }
     };
 
+
+    socket.on('pairIdentified', function(player) {
+      GlobalContext.scopeProvider.$apply(function() {
+        GlobalContext.pairConnected = true;
+        GlobalContext.players[1].name = player.name;
+        GlobalContext.players[1].gender = player.gender;
+      });
+    });
+
+    socket.on('movieSelected', function(url) {
+      GlobalContext.scopeProvider.$apply(function() {
+        GlobalContext.movieInReady = true;
+        GlobalContext.currentRound.movieUrl = url;
+      });
+    });
+
+    socket.on('scoreRegistered', function(score) {
+      GlobalContext.scopeProvider.$apply(function() {
+        GlobalContext.players[1].score += score;
+      });
+    })
+
+    socket.on('pairDisconnected', function(player, $location) {
+      // GlobalContext.locationProvider.path("/client");
+      window.location.href = "/client";
+    });
+
+    GlobalContext.sendIdentify();
+
     $routeProvider
-      .when('/', {
-        controller: 'IntroController as intro',
-        templateUrl: '_intro.html',
-        resolve: resolveGlobalContext
-      })
       .when('/mirror', {
         controller: 'MirrorTestController as mirror',
         templateUrl: '_mirror.html',
@@ -97,7 +148,7 @@ angular.module('YAH', ['ngRoute', 'ngAudio'])
         resolve: resolveGlobalContext
       })
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/players'
       });
 
 
@@ -140,14 +191,14 @@ angular.module('YAH').config(function($sceDelegateProvider) {
 
 angular.module('YAH').directive('animateOnChange', function($timeout) {
   return function(scope, element, attr) {
-    scope.$watch(attr.animateOnChange, function(nv,ov) {
-      if (nv!=ov) {
-        if(element.hasClass("animated")) return;
-        
+    scope.$watch(attr.animateOnChange, function(nv, ov) {
+      if (nv != ov) {
+        if (element.hasClass("animated")) return;
+
         element.addClass(element.attr('data-anim'));
         element.addClass('animated');
-        
-        var removeAnimatedClass = function(){
+
+        var removeAnimatedClass = function() {
           element.removeClass("animated");
           element.removeClass(element.attr('data-anim'));
           // element[0].removeEventListener('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', removeAnimatedClass);

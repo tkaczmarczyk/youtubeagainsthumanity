@@ -4,9 +4,9 @@
          context.GC = GlobalContext;
 
          //Select current player
-         context.forWhom = GlobalContext.getCurrentPlayer();
+         context.forWhom = GlobalContext.players[1];
          
-
+         GlobalContext.movieOutReady = false;
          GlobalContext.currentRound.movieUrl = "";
          
 
