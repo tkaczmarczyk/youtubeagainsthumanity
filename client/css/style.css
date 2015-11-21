@@ -1,7 +1,9 @@
+
     body {
         background: rgb(239, 79, 93);
         text-align: center;
     }
+    
     
     .shadow {
         box-shadow: 0 0 5px rgba(0,0,0,1);
@@ -11,11 +13,15 @@
         background: rgb(253, 173, 85);
     }
     
+    .teal-bg {
+        background: rgb(139, 206, 171);
+    }
+    
     .center {
         text-align: center;
     }
     
-    #orange_bar {
+    #orange_bar, #teal_bar {
         padding: 1em 0;
         margin-top: -1.5em;
         text-align: center;
@@ -43,6 +49,10 @@
     
     #new_player_gender img {
         vertical-align: bottom;
+    }
+    
+    ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+        color: rgb(253, 173, 85);
     }
     
     input[type=text] {
@@ -96,6 +106,93 @@
     opacity: 1;
   }
   
+  #footer {
+      text-align: left;
+      color: #fff;
+      padding: 3em;
+      background: rgb(38, 36, 93);
+  }
   
   
+  #link_input {
+      font-size: 2.5em;
+      width: 80%;
+  }
   
+  #player_icon {
+      height: 2em;
+      width: 2em;
+      background: transparent url('../img/male_small.png') center center no-repeat;
+      background-size: contain;
+      display: inline-block;
+      vertical-align: middle;
+  }
+  
+  #player_icon.female {
+      background-image: url('../img/female_small.png');
+  }
+  
+  
+  	.progressbar {
+		height: 10px;
+		background: red;
+		padding: 0.5em;
+		float: right;
+		clear: both;
+		overflow: visible;
+		width: 0;
+		position: relative;
+		top: 0;
+		transition: 500ms linear all;
+	}
+
+	.progressbar span {
+		position: absolute;
+		top: 0.5em;
+		right: 0;
+	}
+	
+	#video_preview {
+		position: absolute;
+		bottom: 1em;
+		right: 1em;
+	}
+	
+	#happiness_bar {
+		position: fixed;
+		bottom: 3em;
+		left: 0;
+		background: red;
+		height: 2em;
+		width: 30%;
+		border-radius: 0 3px 3px 0;
+	}
+	
+	#below_happiness_bar {
+	    position: fixed;
+	    bottom: 0;
+	    left: 0;
+	    right: 0;
+	    background: rgb(38, 36, 93);
+	    padding: 1em;
+	    height: 3em;
+	}
+	
+	#below_happiness_bar img {
+	    height: 1em;
+	}
+	
+	#countdown {
+		font-size: 48px;
+	    position: absolute;
+	    right: 2em;
+	    top: 2em;
+	    text-align: center;
+	    border-radius: 100%;
+	    width: 2em;
+	    height: 2em;
+        border: 2px solid rgb(253, 173, 85);
+	    padding: 0;
+	    
+	}
+	

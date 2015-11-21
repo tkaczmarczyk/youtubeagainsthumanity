@@ -1,5 +1,16 @@
-<h1>{{enter_link.forWhom.name}}</h1>
+<div class="row">
+    <div class="col-lg-12 teal-bg shadow" id="teal_bar">
+        <div id="player_icon" ng-class="{female: enter_link.forWhom.gender==0}"></div> {{enter_link.forWhom.name}}
+    </div>
+</div>
 
-<input type="text" ng-model="enter_link.GC.currentRound.movieUrl" />
+<div style="margin: 2em">
+    <img src="./img/sii_elementy_laptop.png" style="height: 80px" /><br />
+    <input type="text" ng-model="enter_link.GC.currentRound.movieUrl" id="link_input" placeholder="Movie link" />
+</div>
 
-<a ng-href="#/emo">Go!</a>
+<div class="row">
+    <div class="col-lg-12 teal-bg shadow">
+        <a ng-href="#/emo"><img src="./img/sii_elementy_play.png" style="height: 200px; margin: 2em"></a>
+    </div>
+</div>

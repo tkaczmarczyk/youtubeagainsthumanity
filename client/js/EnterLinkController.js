@@ -5,6 +5,7 @@
 
          //Select current player
          context.forWhom = GlobalContext.getCurrentPlayer();
+         
 
          GlobalContext.currentRound.movieUrl = "";
      });

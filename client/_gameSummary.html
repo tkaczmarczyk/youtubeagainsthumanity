@@ -1,7 +1,7 @@
 
-<h1>{{game.playersSorted[0].name}} {{game.playersSorted[0].score}}</h1>
+<h1>{{game.playersSorted[0].name}} {{game.playersSorted[0].score | number : 0}}</h1>
 
-<h1>{{game.playersSorted[1].name}} {{game.playersSorted[1].score}}</h1>
+<h1>{{game.playersSorted[1].name}} {{game.playersSorted[1].score | number : 0}}</h1>
 
 <h1 ng-if="game.playersSorted.length>2">{{game.playersSorted[2].name}} {{game.playersSorted[2].score}}</h1>
 
