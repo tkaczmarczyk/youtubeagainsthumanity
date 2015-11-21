@@ -5,14 +5,15 @@
   </div>
   
   
-<a ng-click="players.addPlayer()" class="btn btn-warning btn-fab btn-raised mdi-action-grade" style="right: 2em; position: absolute; top: 1em; z-index: 10;"></a>
+<a ng-click="players.addPlayer()" class="btn btn-warning btn-fab btn-raised mdi-social-person-add" style="right: 2em; position: absolute; top: 1em; z-index: 10;"></a>
           
-<a ng-href="#/enter_link" class="btn btn-warning btn-fab btn-raised mdi-action-mail" style="right: 5em; position: absolute; top: 1em; z-index: 11;"></a>
+<a ng-href="#/enter_link" class="btn btn-warning btn-fab btn-raised mdi-av-play-arrow" style="right: 5em; position: absolute; top: 1em; z-index: 11;"></a>
+
 
 
 
 <div id="players">
-  <div class="player" ng-repeat="p in players.players" ng-class="{female: p.gender==0}"><div ng-click="players.removePlayer(p.name);"  class="player_remove  btn btn-warning btn-fab btn-raised">-</div><span class="name">{{p.name}}</span></div>
+  <div class="player" ng-repeat="p in players.players" ng-class="{female: p.gender==0}"><div ng-click="players.removePlayer(p.name);"  class="player_remove  btn btn-warning btn-fab btn-raised mdi-action-highlight-remove">-</div><span class="name">{{p.name}}</span></div>
 </div>
 
 
@@ -22,4 +23,12 @@
     <input type="text" id="new_player_name" ng-model="players.new_name" placeholder="New player name" />
     <img src="./img/female_small.png" style="width: 50px; height: 100px;" ng-class="{active: players.new_gender==0}" ng-click="players.new_gender=0" id="female" />
     <img src="./img/male_small.png"  style="width: 51px; height: 109px;"ng-class="{active: players.new_gender==1}" ng-click="players.new_gender=1" id="male" />
+</div>
+
+
+
+<div class="row shadow">
+  <div class="col-md-12" id="footer">
+    Powered by: Tududu Tududu
+  </div>
 </div>

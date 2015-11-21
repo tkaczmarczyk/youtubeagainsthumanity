@@ -8,7 +8,8 @@
    context.emotionLevels = {};
    context.timeLeft = 20;
    context.movieUrl = "https://www.youtube.com/embed/" + youtube_parser(GlobalContext.currentRound.movieUrl) + "?rel=0&controls=0&showinfo=0&autoplay=1";
-
+   context.forWhom = GlobalContext.getCurrentPlayer();
+         
    function youtube_parser(url) {
     var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
     var match = url.match(regExp);

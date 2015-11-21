@@ -1,9 +1,17 @@
+<canvas style="display:none;" id="temp_canvas" width="640" height="360"></canvas>
+<img src="" id="captured_frame" style="display: none;" />
+	
+<div class="row">
+    <div class="col-lg-12 teal-bg shadow" id="teal_bar">
+        <div id="player_icon" ng-class="{female: enter_link.forWhom.gender==0}"></div> {{emo.forWhom.name}}
+    </div>
+</div>
+
 <iframe width="560" height="315" ng-src="{{emo.movieUrl}}" frameborder="0" allowfullscreen></iframe>
 
 	<input type="text" id="countdown" ng-model="emo.timeLeft" />
 
-	<canvas style="display:none;" id="temp_canvas" width="640" height="360"></canvas>
-
+	
 	<!--<button ng-click="emo.startSnapping();">Start</button>-->
 	<!--<button ng-click="emo.stopSnapping();">Stop</button>-->
 
@@ -20,10 +28,9 @@
 	<!--	<div class="progressbar"  ng-style="{width: emo.emotionLevels[0].scores.surprise*100+'%'}" id="surprise"><span>Surprise</span></div>-->
 	<!--</div>-->
 	
-	<div id="happiness_bar" ng-style="{width: emo.emotionLevels[0].scores.happiness*100+'%'}"></div>
+	<div id="happiness_bar" class="shadow" ng-style="{width: emo.emotionLevels[0].scores.happiness*100+'%'}"></div>
 	
-	<div id="below_happiness_bar">
+	<div id="below_happiness_bar" class="shadow">
 		<img src="./img/sad_icon.png" style="float: left;" />
 		<img src="./img/happy_icon.png" style="float: right;" />
 	</div>
-	<img src="" id="captured_frame" style="display: none;" />

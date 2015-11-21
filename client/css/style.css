@@ -164,7 +164,7 @@
 		left: 0;
 		background: red;
 		height: 2em;
-		width: 30%;
+		/*width: 30%;*/
 		border-radius: 0 3px 3px 0;
 	}
 	
@@ -193,6 +193,7 @@
 	    height: 2em;
         border: 2px solid rgb(253, 173, 85);
 	    padding: 0;
+	    z-index: 999;
 	    
 	}
 	
