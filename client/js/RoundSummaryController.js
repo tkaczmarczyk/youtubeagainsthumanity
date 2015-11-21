@@ -2,7 +2,8 @@
     .controller('RoundSummaryController', function(GlobalContext) {
     var context = this;
     context.GC = GlobalContext;
-    
+    context.forWhom = GlobalContext.getCurrentPlayer();
+         
     context.gameOver = false;
     context.scoreThisRound = GlobalContext.currentRound.score;
     context.player = GlobalContext.getCurrentPlayer();

@@ -1,75 +1,79 @@
+body {
+    background: rgb(239, 79, 93);
+    text-align: center;
+    font-family: Lato;
+}
 
-    body {
-        background: rgb(239, 79, 93);
-        text-align: center;
-    }
-    
-    
-    .shadow {
-        box-shadow: 0 0 5px rgba(0,0,0,1);
-    }
-    
-    .orange-bg {
-        background: rgb(253, 173, 85);
-    }
-    
-    .teal-bg {
-        background: rgb(139, 206, 171);
-    }
-    
-    .center {
-        text-align: center;
-    }
-    
-    #orange_bar, #teal_bar {
-        padding: 1em 0;
-        margin-top: -1.5em;
-        text-align: center;
-        position: relative;
-        top: 0;
-        z-index: 2;
-    }
-    
-    .navbar {
-        position: relative;
-        top: 0;
-        z-index: 4;
-    }
-        
-    #new_player_gender {
-        text-align: center;
-        margin-top: 3em;
-    }    
-    
-    
-    #new_player_gender * {
-        margin: 1em;
-    }
-    
-    
-    #new_player_gender img {
-        vertical-align: bottom;
-    }
-    
-    ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
-        color: rgb(253, 173, 85);
-    }
-    
-    input[type=text] {
-        border: none;
-        border-bottom: 2px solid rgb(253, 173, 85);
-        color: rgb(253, 173, 85);
-        padding: 0.5em;
-        background: transparent;
-        font-size: 1.3em;
-    }
-    
-  #players {
+.navbar-brand {
+    font-weight: 700;
+    text-transform: lowercase;
+}
+
+.shadow {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 1);
+}
+
+.orange-bg {
+    background: rgb(253, 173, 85);
+}
+
+.teal-bg {
+    background: rgb(139, 206, 171);
+}
+
+.center {
+    text-align: center;
+}
+
+#orange_bar,
+#teal_bar {
+    padding: 1em 0;
+    margin-top: -1.5em;
+    text-align: center;
+    position: relative;
+    top: 0;
+    z-index: 2;
+}
+
+.navbar {
+    position: relative;
+    top: 0;
+    z-index: 4;
+}
+
+#new_player_gender {
+    text-align: center;
+    margin-top: 3em;
+}
+
+#new_player_gender * {
+    margin: 1em;
+}
+
+#new_player_gender img {
+    vertical-align: bottom;
+}
+
+::-webkit-input-placeholder {
+    /* WebKit, Blink, Edge */
+    color: rgb(253, 173, 85);
+}
+
+input[type=text] {
+    border: none;
+    border-bottom: 2px solid rgb(253, 173, 85);
+    color: rgb(253, 173, 85);
+    padding: 0.5em;
+    background: transparent;
+    font-size: 1.3em;
+}
+
+#players {
     text-align: center;
     margin-top: 4em;
-  }
+}
 
-  .player {
+.player {
     width: 120px;
     height: 250px;
     display: inline-block;
@@ -77,123 +81,135 @@
     position: relative;
     top: 0;
     background: transparent url('../img/male.png') center center no-repeat;
-  }
-  
-  .player.female {
+}
+
+.player.female {
     background-image: url('../img/female.png');
-  }
-  
-  .player .name {
+}
+
+.player .name {
     position: absolute;
     top: 270px;
     left: 0;
     right: 0;
     text-align: center;
-  }
-  
-  .player .player_remove {
-      zoom: 0.75;
-      float: left;
-  } 
-  
-  #new_player_gender img {
+}
+
+.player .player_remove {
+    zoom: 0.75;
+    float: left;
+}
+
+#new_player_gender img {
     cursor: pointer;
     opacity: 0.4;
     transition: 300ms linear all;
-  }
-  
-  #new_player_gender img.active {
-    opacity: 1;
-  }
-  
-  #footer {
-      text-align: left;
-      color: #fff;
-      padding: 3em;
-      background: rgb(38, 36, 93);
-  }
-  
-  
-  #link_input {
-      font-size: 2.5em;
-      width: 80%;
-  }
-  
-  #player_icon {
-      height: 2em;
-      width: 2em;
-      background: transparent url('../img/male_small.png') center center no-repeat;
-      background-size: contain;
-      display: inline-block;
-      vertical-align: middle;
-  }
-  
-  #player_icon.female {
-      background-image: url('../img/female_small.png');
-  }
-  
-  
-  	.progressbar {
-		height: 10px;
-		background: red;
-		padding: 0.5em;
-		float: right;
-		clear: both;
-		overflow: visible;
-		width: 0;
-		position: relative;
-		top: 0;
-		transition: 500ms linear all;
-	}
+}
 
-	.progressbar span {
-		position: absolute;
-		top: 0.5em;
-		right: 0;
-	}
-	
-	#video_preview {
-		position: absolute;
-		bottom: 1em;
-		right: 1em;
-	}
-	
-	#happiness_bar {
-		position: fixed;
-		bottom: 3em;
-		left: 0;
-		background: red;
-		height: 2em;
-		/*width: 30%;*/
-		border-radius: 0 3px 3px 0;
-	}
-	
-	#below_happiness_bar {
-	    position: fixed;
-	    bottom: 0;
-	    left: 0;
-	    right: 0;
-	    background: rgb(38, 36, 93);
-	    padding: 1em;
-	    height: 3em;
-	}
-	
-	#below_happiness_bar img {
-	    height: 1em;
-	}
-	
-	#countdown {
-		font-size: 48px;
-	    position: absolute;
-	    right: 2em;
-	    top: 2em;
-	    text-align: center;
-	    border-radius: 100%;
-	    width: 2em;
-	    height: 2em;
-        border: 2px solid rgb(253, 173, 85);
-	    padding: 0;
-	    z-index: 999;
-	    
-	}
-	
+#new_player_gender img.active {
+    opacity: 1;
+}
+
+#footer {
+    text-align: left;
+    color: #fff;
+    padding: 3em;
+    background: rgb(38, 36, 93);
+}
+
+#link_input {
+    font-size: 2.5em;
+    width: 80%;
+}
+
+#player_icon {
+    height: 2em;
+    width: 2em;
+    background: transparent url('../img/male_small.png') center center no-repeat;
+    background-size: contain;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#player_icon.female {
+    background-image: url('../img/female_small.png');
+}
+
+.progressbar {
+    height: 10px;
+    background: red;
+    padding: 0.5em;
+    float: right;
+    clear: both;
+    overflow: visible;
+    width: 0;
+    position: relative;
+    top: 0;
+    transition: 500ms linear all;
+}
+
+.progressbar span {
+    position: absolute;
+    top: 0.5em;
+    right: 0;
+}
+
+#video_preview {
+    position: absolute;
+    bottom: 1em;
+    right: 1em;
+}
+
+#happiness_bar {
+    position: fixed;
+    bottom: 3em;
+    left: 0;
+    background: red;
+    height: 2em;
+    /*width: 30%;*/
+    border-radius: 0 3px 3px 0;
+    transition: 500ms linear all;
+}
+
+#below_happiness_bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgb(38, 36, 93);
+    padding: 1em;
+    height: 3em;
+}
+
+#below_happiness_bar img {
+    height: 1em;
+}
+
+#countdown {
+    font-size: 48px;
+    position: absolute;
+    right: 2em;
+    top: 2em;
+    text-align: center;
+    border-radius: 100%;
+    width: 2em;
+    height: 2em;
+    border: 2px solid rgb(253, 173, 85);
+    padding: 0;
+    z-index: 999;
+}
+
+.current_player_score {
+    color: #fff;
+}
+
+.current_player_score[animate-on-change] {
+    transition: all 0.2s;
+    -webkit-transition: all 0.2s;
+}
+
+.current_player_score[animate-on-change].changed {
+    background-color: red;
+    transition: none;
+    -webkit-transition: none;
+}

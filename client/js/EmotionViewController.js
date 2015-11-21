@@ -9,6 +9,12 @@
    context.timeLeft = 20;
    context.movieUrl = "https://www.youtube.com/embed/" + youtube_parser(GlobalContext.currentRound.movieUrl) + "?rel=0&controls=0&showinfo=0&autoplay=1";
    context.forWhom = GlobalContext.getCurrentPlayer();
+   
+   apiKeys = [];
+   apiKeys.push("04ba23587af84137bc65223296969d13");
+   apiKeys.push("578c181b483b44b188d9336832ca9158");
+   apiKeys.push("fb2cdf80586e449c98f477ebc43ded8a");
+   apiKeyIndex = 0;
          
    function youtube_parser(url) {
     var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
@@ -64,7 +70,9 @@
       beforeSend: function(xhrObj) {
        // Request headers
        xhrObj.setRequestHeader("Content-Type", "application/octet-stream");
-       xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", " 04ba23587af84137bc65223296969d13");
+       xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", apiKeys[apiKeyIndex % apiKeys.length]);
+       apiKeyIndex++;
+       
       },
       type: "POST",
       // Request body
@@ -103,7 +111,7 @@
 
    }
 
-   context.snapInterval = window.setInterval(snapshot, 3000);
+   context.snapInterval = window.setInterval(snapshot, 500);
    countdownInterval = window.setInterval(countdown, 1000);
    // context.startSnapping = function() {
    // context.snapInterval = window.setInterval(snapshot, 3000);

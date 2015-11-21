@@ -2,7 +2,7 @@
   .controller('PlayersController', function(GlobalContext) {
    var context = this;
    context.playersCount = GlobalContext.players.length;
-   context.new_name = "New name";
+   context.new_name = "";
    context.new_gender = 0;
    
    context.GC = GlobalContext;

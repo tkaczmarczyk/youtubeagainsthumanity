@@ -23,7 +23,7 @@ angular.module('YAH', ['ngRoute'])
         //3 seconds interval
         var t = (GlobalContext.currentRound.mostRecentHappinessLevel-GlobalContext.threshold)/(1-GlobalContext.threshold);
         var bulletIntervalForMin = 3500;
-        var bulletIntervalForMax = 500;
+        var bulletIntervalForMax = 1000;
         var bulletInterval = bulletIntervalForMin + t * (bulletIntervalForMax - bulletIntervalForMin);
         
      		socket.emit('triggerShot');
@@ -135,4 +135,17 @@ angular.module('YAH', ['ngRoute'])
 
 angular.module('YAH').config(function($sceDelegateProvider) {
   $sceDelegateProvider.resourceUrlWhitelist(['**']);
+});
+
+angular.module('YAH').directive('animateOnChange', function($timeout) {
+  return function(scope, element, attr) {
+    scope.$watch(attr.animateOnChange, function(nv,ov) {
+      if (nv!=ov) {
+        element.addClass('changed');
+        $timeout(function() {
+          element.removeClass('changed');
+        }, 200); // Could be enhanced to take duration as a parameter
+      }
+    });
+  };
 });
