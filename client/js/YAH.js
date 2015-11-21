@@ -24,7 +24,7 @@ angular.module('YAH', ['ngRoute'])
         //3 seconds interval
         var t = (GlobalContext.currentRound.mostRecentHappinessLevel-GlobalContext.threshold)/(1-GlobalContext.threshold);
         var bulletIntervalForMin = 1000;
-        var bulletIntervalForMax = 400;
+        var bulletIntervalForMax = 500;
         var bulletInterval = bulletIntervalForMin + t * (bulletIntervalForMax - bulletIntervalForMin);
         
      		socket.emit('triggerShot');
